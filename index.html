@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Loan Amount Prediction Model</title>
+    <style>
+        body {
+            background: lightblue;
+            color: black;
+            padding: 30px;
+            font-family: Arial, Roboto, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        h3 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input,
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input:focus,
+        select:focus {
+            border-color: #66afe9;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Amount Prediction Model</h1>
+        <h3>...WELCOME...</h3>
+        <form action="/predict" method="post">
+            <label for="lender_count">Lender Count:</label>
+            <input type="number" name="lender_count" required>
+
+            <label for="repayment_term">Repayment Term:</label>
+            <input type="number" name="repayment_term" required>
+
+            <label for="sector">Sector:</label>
+            <select name="sector" required>
+                <option value="" disabled selected>Select a Sector</option>
+                <option value="Retail">Retail</option> 
+                <option value="Food">Food</option> 
+                <option value="Services">Services</option> 
+                <option value="Clothing">Clothing</option> 
+                <option value="Arts">Arts</option> 
+                <option value="Agriculture">Agriculture</option> 
+                <option value="Manufacturing">Manufacturing</option> 
+                <option value="Construction">Construction</option> 
+                <option value="Wholesale">Wholesale</option> 
+                <option value="Health">Health</option> 
+                <option value="Transportation">Transportation</option> 
+                <option value="Education">Education</option> 
+                <option value="Housing">Housing</option> 
+                <option value="Personal Use">Personal Use</option>
+            </select>
+
+            <label for="status">Status:</label>
+            <select name="status" required>
+                <option value="" disabled selected>Select a Status</option>
+                <option value="funded">funded</option> 
+                <option value="fundraising">fundraising</option> 
+                <option value="expired">expired</option>
+            </select>   
+            
+            <label for="location_country_code">Location Country code:</label>
+            <select name="location_country_code" required>
+                <option value="" disabled selected>Select a location country code</option>
+                <option value="BJ">BJ</option>
+                <option value="BW">BW</option>
+                <option value="BF">BF</option>
+                <option value="BI">BI</option>
+                <option value="CM">CM</option>
+                <option value="CG">CG</option>
+                <option value="CD">CD</option>
+                <option value="EG">EG</option>
+                <option value="GH">GH</option>
+                <option value="CI">CI</option>
+                <option value="KE">KE</option>
+                <option value="LS">LS</option>
+                <option value="LR">LR</option>
+                <option value="MG">MG</option>
+                <option value="MW">MW</option>
+                <option value="ML">ML</option>
+                <option value="MR">MR</option>
+                <option value="MZ">MZ</option>
+                <option value="NG">NG</option>
+                <option value="RW">RW</option>
+                <option value="SN">SN</option>
+                <option value="SL">SL</option>
+                <option value="SO">SO</option>
+                <option value="ZA">ZA</option>
+                <option value="SS">SS</option>
+                <option value="TZ">TZ</option>
+                <option value="TG">TG</option>
+                <option value="UG">UG</option>
+                <option value="ZM">ZM</option>
+                <option value="ZW">ZW</option>
+            </select>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+        <div class="prediction">Estimated Loan Amount: {{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
